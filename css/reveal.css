@@ -1,0 +1,141 @@
+/* CSS for jQuery Reveal Plugin
+ * Maintained for Foundation. foundation.zurb.com
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ */
+/* Reveal Modals ---------------------- */
+
+/* touchpanel requires body to be position reletive or it woln't work. */
+body {
+  position: relative!important; 
+}
+
+/* so we don't break the modal on other frameworks that aren't useing border-box, if you need IE below 8 support then your gonna have to change things */
+.reveal-modal{
+ -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; 
+}
+
+
+.reveal-modal-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: #000;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 100;
+  display: none;
+  top: 0;
+  left: 0;
+}
+
+.reveal-modal {
+  background: #fff;
+  visibility: hidden;
+  display: none;
+  top: 100px;
+  left: 50%;
+  margin-left: -260px;
+  width: 520px;
+  position: absolute;
+  z-index: 141;
+  padding: 30px;
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.reveal-modal .close-reveal-modal:not(.button) {
+  font-size: 22px;
+  font-size: 2.2rem;
+  line-height: .5;
+  position: absolute;
+  top: 8px;
+  right: 11px;
+  color: #aaa;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.reveal-modal.small {
+  width: 30%;
+  margin-left: -15%;
+}
+
+.reveal-modal.medium {
+  width: 40%;
+  margin-left: -20%;
+}
+
+.reveal-modal.large {
+  width: 60%;
+  margin-left: -30%;
+}
+
+.reveal-modal.xlarge {
+  width: 70%;
+  margin-left: -35%;
+}
+
+.reveal-modal.expand {
+  width: 90%;
+  margin-left: -45%;
+}
+
+.reveal-modal .row {
+  min-width: 0;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.reveal-modal > :first-of-type {
+  margin-top: 0;
+}
+
+.reveal-modal > :last-of-type {
+  margin-bottom: 0;
+}
+
+/*I know it seems a bit much with all the important, but it works and nothing should override these styles when we're on touchpanel*/
+.reveal-modal.touchpanel {
+/*  width: 100% !important;
+  height: 100% !important;*/
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /*top: 0px;*/
+  margin-left: 0px;
+/*  left: 100%;*/
+  /*overflow-x: scroll!important;*/
+  overflow-y: hidden;
+  box-shadow: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*.reveal-modal.touchpanel.old-mobile-os {
+  margin-left: 0px;
+  position: absolute;
+  left: 100%;
+}*/
+
+
+.show-on-panel {
+  display: block!important;
+}
+.reveal-modal.open {
+  display: block!important;
+  visibility: visible!important;
+}
+
+@media print {
+
+  .reveal-modal {
+    border: solid 1px #000;
+    background: #fff;
+  }
+}
+

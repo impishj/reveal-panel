@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8" />
+
+	<!-- Set the viewport width to device width for mobile -->
+	<meta name="viewport" content="width=device-width" />
+
+	<title>Foundation's Reveal not with touch panels!</title>
+	
+	<!--meta tags for social services-->
+<!-- 	<meta name="description" content="Share the Hope is a moving video filmed in one day, with one camera, at one hospital Children's Healthcare of Atlanta at Scottish Rite. Watch the video and then share your own message with the young patients at Children's.">
+	<meta property="fb:app_id" content="253178464734894" />
+	<meta property="fb:admins" content="508286125" />
+	<meta property="og:title" content="Children&#039;s Healthcare of Atlanta" />
+	<meta property="og:type" content="non_profit" />
+	<meta property="og:url" content="http://sharewithchildrens.org" />
+	<meta property="og:image" content="http://fb.bkvdigital.com/choa/fb-images/share-icon.jpg" />
+	<meta property="og:site_name" content="Share the Hope" />
+	<meta property="og:description"
+	      content="Watch this video 'Share the Hope' and then share your own hopeful message with the young patients at Children's. Let them know you're thinking about them – this holiday season, and all year long."/> -->
+	<!--Include google web font-->
+	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito:400,700' rel='stylesheet' type='text/css'> -->
+
+	<!-- Included CSS Files -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css" media="screen" title="no title" charset="utf-8">
+	
+	<link rel="stylesheet" href="css/reveal.css">
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquerypp.swipe.js"></script>
+	<script src="js/jquery.android-ios-detect.js"></script>
+	<!-- <script src="js/jquery.foundation.reveal.js"></script> -->
+	<script src="js/jquery.foundation.reveal-panel-alpha-04.js" type="text/javascript" charset="utf-8"></script>
+	<!-- IE Fix for HTML5 Tags -->
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+<body style="background-color:white">
+<h1>Reveal, now with touchpanels</h1>
+
+	<a href="#" class="visible-phone" data-reveal-id="panel" data-animation="panel" data-reveal-menu data-animationSpeed="400" data-reveal-content="nav-menu" >
+			<h2>Mobile Menu =</h2>	
+		</a>
+<!-- data-reveal-panel-content-id="a-div-with-some-content" -->
+	<a href="#" data-reveal-id="panel" data-animation="mpanel" data-reveal-menu data-animationSpeed="400" data-reveal-content="a-div-with-some-content" >
+		<h4>data-animation="mpanel"<h4>
+			<h5>(animation is a modal for desktop and a panel for mobile)</h5>
+			<h4>data-reveal-menu<br/> data-reveal-content="id of element to place within modal" </h4>
+	</a>
+
+	<a href="#" data-reveal-id="panel" data-animation="mpanel" data-reveal-content="a-div-with-some-content" >
+		<h4>data-animation="mpanel"<h4>
+			<h5>(animation is a modal for desktop and a panel for mobile)</h5>
+			<h4>data-reveal-content="id of element to place within modal" </h4>
+	</a>
+
+	<a href="#" data-reveal-id="panel" data-animation="panel" data-reveal-content="a-div-with-some-content" >
+		<h4>data-animation="panel"<h4>
+			<h5>(animation is always a panel)</h5>
+			<h4>data-reveal-content="id of element to place within modal" </h4>
+	</a>
+
+	<button href="#" data-reveal-id="modal" data-animation="mpanel" data-animationSpeed="400" >
+		<h2>Open Modal mPanel, with predefined modal</h2>
+	</button>
+
+	<button href="#" data-reveal-id="modal" data-animation="panel" data-animationSpeed="400" >
+		<h2>Open Modal panel, with predefined modal</h2>
+	</button>
+
+	<a href="#" data-reveal-id="modal" >
+		<h2>Basic Open Modal</h2>
+	</a>
+
+	<div id="nav-menu" class="hidden-phone" style="position:relative; background-color:red;">
+			<ul>
+				These list items must have class="closeModal"
+				<li><a href="#thing" class="closeModal" >Click this to navigate down the page</a></li>
+				<li><a class="closeModal" >This is a nice long menu item</a></li>
+				<li><a class="closeModal" >This is a nice long menu item</a></li>
+				<li><a class="closeModal" >This is a nice long menu item</a></li>
+				<li><a class="closeModal" >This is a nice long menu item</a></li>
+				<li>This is a nice long menu item</li>
+			</ul>
+	</div>
+
+	<div id="some-content" class="hidden-phone" style="position:relative; background-color:green;">
+		SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!			<br/><br/><br/>			SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!<br/><br/><br/>			SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!<br/><br/><br/>SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!SOME CONTENT!!!<br/><br/><br/>
+	</div>
+
+	<div id="a-div-with-some-content" class="hidden-phone" style="position:relative; background-color:orange;">
+		<!-- dummy content -->
+		this is a div with some content		<br/><br/><br/>				<br/>		AND LOTS MORE:	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	</div>
+
+<!-- dummy page content -->
+<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><a name="thing"></a><br/><br/><br/>here is some more.
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/>
+
+	<!-- empty modal -->
+	<div id="panel" class="reveal-modal expand">		
+	  <a class="close-reveal-modal">&#215;</a>
+	</div>
+
+	<!-- modal with content already defined -->
+	<div id="modal" class="reveal-modal expand">		
+	  <a class="close-reveal-modal">&#215;</a>
+		<h1>This modal already has content defined </h1>
+		<div>m, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum doloreum.</div>	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div><div>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div><div>Lorem ipsostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+	</div>
+
+
+</body>
+</html>
