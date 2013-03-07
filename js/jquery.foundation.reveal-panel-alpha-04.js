@@ -293,18 +293,10 @@ function getCurrentDocWidth(currentAnimationType) {
         $closeButton;
         var $mCloseButton;
 
-      //console.log(options); 
-
       //
       // Do we have a modal background element?
       //
       if ( modalBg.length === 0 ) {
-        
-        // if(isMenu){
-        // modalBg = $( '<div />', { 'class' : 'reveal-modal-bg' } ).insertAfter( modal );
-        // modalBg.fadeTo( 'fast', 0.2 );
-        // console.log("hello?")
-        // }
         
         if(options.animation != "panel" || isMenu==true){
         //
@@ -500,8 +492,7 @@ function getCurrentDocWidth(currentAnimationType) {
             cssOpts.open.top = $doc.scrollTop() - topOffset;  
 
             if(options.animationtype=="mpanel"){
-            var openModalTopPos = '';
-              //cssOpts.open.top = '0px';   
+            var openModalTopPos = ''; // get the top position from reveal-modal class instead of calculating it. 
             } else {
             var openModalTopPos = $doc.scrollTop() + topMeasure + 'px';       
             }
@@ -699,9 +690,6 @@ function getCurrentDocWidth(currentAnimationType) {
           // Are we using the 'fadeAndPop' animation?
           //
           if ( options.animation === "fadeAndPop" ) {
-
-            //modal.stop();
-            //modal.css({"left":"50%"});
             //
             // Yes, okay, let's set the animation properties.
             //
@@ -804,39 +792,27 @@ function getCurrentDocWidth(currentAnimationType) {
             var newScrollPosCalc, newScrollPosBody, newScrollPosTouch = "";
             var newScrollPosTouch = $('.touchpanel').scrollTop()
             var newScrollPosBody = $('body').scrollTop()
-            //var newScrollPosCalc = startingScroll-newScrollPos;
+            
             var newScrollPosCalc = newScrollPosBody - newScrollPosTouch -10;
-            // //console.log(topOffset+"top offset")
-            // //console.log(newScrollPosCalc+"calc")
-            // //console.log(newScrollPosTouch+"touch")
-            // //console.log(newScrollPosBody+"body")
+            
             $('.touchpanel').css({"position":"absolute","left":modalPanAmount,"top":newScrollPosCalc});
 
             modal.trigger( 'reveal:closed' );
             
             $('body').stop().animate({"left":"0%"},options.animationspeed, function(){
-                //$('#panelTempMarker').remove();
                 //
                 // put content back where it came from
                 //
                 returnContent();
+                //
                 // clear an inline style that panel used and ends up overriding 
+                //
                 modal.css({"width":""}); 
                 modal.removeClass('touchpanel');
                 modal.css( cssOpts.close );
                 
             });
 
-      
-            // if ( !modalQueued ) {
-            // modal.trigger( 'reveal:closed' );
-                
-            // } else {
-                
-            //     modal.trigger( 'reveal:closed' );
-           
-
-            // } // end if !modalQueued
             //
             // Is the modal animation queued?
             //
@@ -1015,13 +991,6 @@ function getCurrentDocWidth(currentAnimationType) {
        * @method destroy
        */
       function destroy() {
-        //
-        // If there is panel content put it back in place now that the modal is closed
-        //
-        // if(panelPointer!="nopanel"){
-        // $('#'+modalPointer+' #'+panelPointer).insertAfter('#panelTempMarker');
-        // $('#panelTempMarker').remove();  
-        // }
         //
         // Unbind all .reveal events from the modal.
         //
