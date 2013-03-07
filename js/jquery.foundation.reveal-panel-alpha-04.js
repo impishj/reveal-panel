@@ -246,7 +246,7 @@ function getCurrentDocWidth(currentAnimationType) {
             //
             // Set the 'top' property to the document scroll minus the calculated top offset.
             //
-            'top': 0,
+            // 'top': 0,
             //
             // Opacity gets set to 0.
             //
@@ -486,17 +486,13 @@ function getCurrentDocWidth(currentAnimationType) {
             // Yes, we're doing the 'fadeAndPop' animation.
             // Okay, set the modal css properties.
             //
+            if(options.animationtype=="mpanel"){
+            var openModalTopPos = modal.css("top"); // get the top position from reveal-modal class instead of calculating it. 
+            } else { var openModalTopPos = $doc.scrollTop() + topMeasure + 'px'; }
             //
             // Set the 'top' property to the document scroll minus the calculated top offset.
             //
             cssOpts.open.top = $doc.scrollTop() - topOffset;  
-
-            if(options.animationtype=="mpanel"){
-            var openModalTopPos = ''; // get the top position from reveal-modal class instead of calculating it. 
-            } else {
-            var openModalTopPos = $doc.scrollTop() + topMeasure + 'px';       
-            }
-
             //
             // Flip the opacity to 0.
             //
@@ -505,6 +501,10 @@ function getCurrentDocWidth(currentAnimationType) {
             // Set the css options.
             //
             modal.css( cssOpts.open );
+            //
+            //
+            //
+
             //
             // Fade in the background element, at half the speed of the modal element.
             // So, faster than the modal element.
