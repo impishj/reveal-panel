@@ -91,11 +91,16 @@ function getCurrentDocWidth(currentAnimationType) {
       var isMenu = true
       console.log("it's a menu")
     }  else { var isMenu = false }    
+
+    if($(this).attr('data-reveal-swipe')!=undefined){ 
+      var swipeToClose = true
+      console.log("Swipe is enabled")
+    }  else { var swipeToClose = false }    
       
     //
     // Find the element with that modalLocation id and call the reveal plugin.
     //
-    $( '#' + modalLocation ).reveal( $( this ).data(), modalLocation, panelPointer, panelType, isMenu );
+    $( '#' + modalLocation ).reveal( $( this ).data(), modalLocation, panelPointer, panelType, isMenu, swipeToClose );
 
   });
 
@@ -103,7 +108,7 @@ function getCurrentDocWidth(currentAnimationType) {
    * @module reveal
    * @property {Object} [options] Reveal options
    */
-  $.fn.reveal = function ( options, modalPointer, panelPointer, panelType, isMenu ) {
+  $.fn.reveal = function ( options, modalPointer, panelPointer, panelType, isMenu, swipeToClose ) {
     // ensure that if panel-mobile-only is in data-animation= then we use the slide animation for desktop situations
 
     var startingScroll = $('body').scrollTop();
@@ -124,6 +129,10 @@ function getCurrentDocWidth(currentAnimationType) {
            * @default fadeAndPop
            */
           animation: 'fadeAndPop',
+          /*
+          * Track the original animation type we set:
+          */
+          animationtype: panelType,
           /**
            * Speed at which the reveal should show. How fast animtions are.
            *
@@ -194,6 +203,7 @@ function getCurrentDocWidth(currentAnimationType) {
     options.animation = getCurrentDocWidth(panelType);
     }
     options = $.extend( {}, defaults, options );
+
 
 
     // //console.log(options) logging because when animationSpeed wasn't working(on chrome), took out camel case and then there was no duplicate property
@@ -447,30 +457,19 @@ function getCurrentDocWidth(currentAnimationType) {
                 modal.trigger( 'reveal:opened' );
                
                 // add touch event listener 
-                if(isMenu==true){
-                  // $('.touchpanel').on('click', '[closeModal]', function ( event ) {
-                  //   event.preventDefault();
-                  // //$('.touchpanel').on('click', '[closeModal]', function(){
-                  //   alert("hello");
-                  //   returnContent();
-                  //   modal.trigger( 'reveal:close' );
-                  // });
-
+                if(isMenu==true && swipeToClose==true){
+                  //
+                  // Make gesturies
+                  //
                   $('.touchpanel').on({
                   'swipeleft' : function(ev) {
-                  ////console.log('Swiping right');
-                  //closeAnimation();
-                  
-                  modal.trigger( 'reveal:close' );
+                    modal.trigger( 'reveal:close' );
                   }
                 });  
-                } else {
+                } else if(swipeToClose==true){
                 $('.touchpanel').on({
                   'swiperight' : function(ev) {
-                  ////console.log('Swiping right');
-                  //closeAnimation();
-                  //returnContent();
-                  modal.trigger( 'reveal:close' );
+                    modal.trigger( 'reveal:close' );
                   }
                 });  
                 }
@@ -498,7 +497,15 @@ function getCurrentDocWidth(currentAnimationType) {
             //
             // Set the 'top' property to the document scroll minus the calculated top offset.
             //
-            cssOpts.open.top = $doc.scrollTop() - topOffset;
+            cssOpts.open.top = $doc.scrollTop() - topOffset;  
+
+            if(options.animationtype=="mpanel"){
+            var openModalTopPos = '';
+              //cssOpts.open.top = '0px';   
+            } else {
+            var openModalTopPos = $doc.scrollTop() + topMeasure + 'px';       
+            }
+
             //
             // Flip the opacity to 0.
             //
@@ -525,7 +532,8 @@ function getCurrentDocWidth(currentAnimationType) {
               //
               // Set the 'top' property to the document scroll plus the calculated top measure.
               //
-              "top": $doc.scrollTop() + topMeasure + 'px',
+              "top": openModalTopPos,
+              // "top": $doc.scrollTop() + topMeasure + 'px',
               //
               // Set it to full opacity.
               //
